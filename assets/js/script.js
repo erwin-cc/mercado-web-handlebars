@@ -33,19 +33,7 @@ $(() => {
         localStorage.setItem("productos", JSON.stringify(productosCarrito))
         $(`[data-nombre=${removeProdName}]`,"#dashboard").addClass("prodShadow").removeClass("opacity")
         transcribirModal(productosCarrito)
-    })
-
-    //Dar formato a elementos que ya han sido seleccionados y están en localstorage
-    /*let prod = $("#productos .prod")
-    prod = Object.entries(prod)
-    prod = prod.slice(0,-2)
-    prod.forEach( e => {
-        let nombreProd = $(e[1]).data().nombre
-        if(productosCarrito.some(e => e == nombreProd)){
-
-        }
-    })*/
-    
+    })   
 
 })
 
