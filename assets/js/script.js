@@ -13,8 +13,9 @@ $(() => {
     //Crear arreglo con productos seleccionados por usuario
     $(document).on("click", ".prod", function () {
         $(this).removeClass("prodShadow").addClass("opacity")
+        let productosCarrito = localStorage.getItem("productos")
+        productosCarrito = !productosCarrito ? [] : JSON.parse(productosCarrito)
         const newProd = $(this).data().nombre
-        productosCarrito = JSON.parse(localStorage.getItem("productos"))
         if (!productosCarrito.some(elem => elem == newProd)) {
             productosCarrito.push(newProd)
             localStorage.setItem("productos",JSON.stringify(productosCarrito))
@@ -26,7 +27,8 @@ $(() => {
     //Quitar productos de modal y reactivarlos en el dashboard
     $(document).on("click",".modal-body .row .col", function () {
         const removeProdName = $(this).data().nombreModal
-        let productosCarrito = JSON.parse(localStorage.getItem("productos"))
+        let productosCarrito = localStorage.getItem("productos")
+        productosCarrito = !productosCarrito ? [] : JSON.parse(productosCarrito)
         productosCarrito = jQuery.grep(productosCarrito, (prod) => {
             return prod !== removeProdName
         })
