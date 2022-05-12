@@ -19,7 +19,12 @@ app.use("/js", express.static(`${__dirname}/assets/js`))
 app.use("/bootstrap", express.static(`${__dirname}/node_modules/bootstrap/dist`))
 app.use("/jquery", express.static(`${__dirname}/node_modules/jquery/dist`))
 
-app.listen(3000, () => console.log("Servidor activo en http://localhost:3000"))
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+app.listen(port, () => console.log("Servidor activo."))
 
 // 1. Crear una ruta raíz que al ser consultada renderice una vista con un parcial
 // “Dashboard” enviándole en el render un arreglo con los nombres de los productos. 
